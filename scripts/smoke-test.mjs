@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-const base = process.env.BASE_URL || "http://localhost:5173";
+const base = process.env.BASE_URL || "http://localhost:3000";
 async function api(
   path,
   { user = "alex", method = "GET", body, status = 200, headers = {} } = {},

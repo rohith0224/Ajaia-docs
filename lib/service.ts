@@ -5,7 +5,7 @@ export function service(db: Database) {
   const decode = (d: any) => ({ ...d, content: JSON.parse(d.content) });
   async function get(id: string, user: string) {
     const d = await query(
-      `SELECT d.*, CASE WHEN d.owner_id=? THEN 'owner' ELSE s.role END role
+      `SELECT d.*, CASE WHEN d.owner_id=? THEN 'owner' ELSE s.role END AS role
       FROM documents d LEFT JOIN shares s ON s.document_id=d.id AND s.user_id=?
       WHERE d.id=? AND (d.owner_id=? OR s.user_id=?)`,
       user,
@@ -29,7 +29,7 @@ export function service(db: Database) {
       return (
         await query(
           `SELECT d.id,d.title,d.owner_id,d.version,d.updated_at,
-        CASE WHEN d.owner_id=? THEN 'owner' ELSE s.role END role
+        CASE WHEN d.owner_id=? THEN 'owner' ELSE s.role END AS role
         FROM documents d LEFT JOIN shares s ON s.document_id=d.id AND s.user_id=?
         WHERE d.owner_id=? OR s.user_id=? ORDER BY d.updated_at DESC`,
           user,

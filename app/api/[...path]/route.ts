@@ -1,4 +1,4 @@
-import { env } from "cloudflare:workers";
+import { getDb } from "../../../db";
 import { ApiError, fromText, userId, USERS } from "../../../lib/domain";
 import { service } from "../../../lib/service";
 export const dynamic = "force-dynamic";
@@ -14,8 +14,7 @@ async function handle(request: Request) {
     )
       throw new ApiError(403, "Cross-origin writes are not allowed.");
     const user = userId(request.headers.get("x-demo-user"));
-    if (!env.DB) throw new Error("Database binding unavailable");
-    const app = service(env.DB);
+    const app = service(getDb());
     let result: any;
     async function body() {
       const raw = await request.text();
