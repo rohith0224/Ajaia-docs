@@ -15,7 +15,7 @@ npm run dev
 
 Open the URL printed by the dev server (normally `http://localhost:3000`). The first database starts empty. Accounts are built into the app; no seed command is required.
 
-`npm run db:migrate` applies `db/postgres.sql` and is safe to run again. `npm run build` also runs it automatically, which is how the Vercel deployment sets up its tables.
+`npm run db:migrate` applies `db/postgres-schema.mjs` and is safe to run again. The build runs it too, and the app also creates any missing tables on its first request.
 
 ## Review in three minutes
 
@@ -68,7 +68,7 @@ Open `http://localhost:3000`. `npm start` uses whatever database `DATABASE_URL` 
 
 ## Hosted deployment
 
-Hosted on Vercel with a Neon Postgres database. Vercel provides `DATABASE_URL` through its Neon integration (Storage tab), and the build creates the tables. Every push to `main` redeploys. Unit tests still run the same SQL against in-memory SQLite (`drizzle/`); `db/postgres.sql` is the production schema.
+Hosted on Vercel with a Neon Postgres database. Vercel provides `DATABASE_URL` through its Neon integration (Storage tab), and the build creates the tables. Every push to `main` redeploys. Unit tests still run the same SQL against in-memory SQLite (`drizzle/`); `db/postgres-schema.mjs` is the production schema.
 
 ## Project map
 

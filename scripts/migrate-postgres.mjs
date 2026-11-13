@@ -1,8 +1,8 @@
-// Applies db/postgres.sql to DATABASE_URL. Safe to run repeatedly.
-import { readFileSync } from "node:fs";
+// Applies the Postgres schema to DATABASE_URL. Safe to run repeatedly.
 import pg from "pg";
+import { SCHEMA_SQL } from "../db/postgres-schema.mjs";
 
-const url = process.env.DATABASE_URL;
+const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
 if (!url) {
   console.warn("migrate-postgres: DATABASE_URL not set, skipping migration.");
   process.exit(0);
@@ -11,7 +11,7 @@ if (!url) {
 const client = new pg.Client({ connectionString: url });
 await client.connect();
 try {
-  await client.query(readFileSync(new URL("../db/postgres.sql", import.meta.url), "utf8"));
+  await client.query(SCHEMA_SQL);
   console.log("migrate-postgres: schema is up to date.");
 } finally {
   await client.end();
