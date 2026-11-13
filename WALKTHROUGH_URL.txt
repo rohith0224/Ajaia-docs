@@ -1,0 +1,3 @@
+NOT RECORDED YET.
+A hosted 3–5 minute personal walkthrough URL is not included.
+Record the flow in docs/WALKTHROUGH_SCRIPT.md, upload it, and replace this text with the accessible URL before submission.

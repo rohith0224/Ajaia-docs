@@ -1,0 +1,8 @@
+node_modules
+dist
+.sites-runtime
+.wrangler
+.vinext
+components
+scripts/vite
+scripts/connector-preview

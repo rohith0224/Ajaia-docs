@@ -1,0 +1,5 @@
+https://ajaia-docs-workspace.workspace-469636.chatgpt.site
+
+Deployment succeeded on 2026-11-13.
+Public demo. Use the Demo account dropdown for Alex, Jamie, or Sam.
+No password or payment is required. Use non-sensitive test data only.
