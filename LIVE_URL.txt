@@ -1,5 +1,5 @@
-https://ajaia-docs-workspace.workspace-469636.chatgpt.site
+https://ajaia-docs-one-pi.vercel.app
 
-Deployment succeeded on 2026-11-13.
+Deployed on Vercel with a Neon Postgres database on 2026-11-13.
 Public demo. Use the Demo account dropdown for Alex, Jamie, or Sam.
 No password or payment is required. Use non-sensitive test data only.
