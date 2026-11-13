@@ -46,7 +46,7 @@ function download(name: string, data: string, type = "text/plain") {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 export default function Home() {
-  const [user, setUser] = useState("alex"),
+  const [user, setUser] = useState("rohith"),
     [docs, setDocs] = useState<Doc[]>([]),
     [active, setActive] = useState<Doc | null>(null);
   const [filter, setFilter] = useState("all"),
@@ -130,7 +130,7 @@ export default function Home() {
   }
   useEffect(() => {
     const selected = localStorage.getItem("ajaia-user");
-    const id = USERS.some((u) => u.id === selected) ? selected! : "alex";
+    const id = USERS.some((u) => u.id === selected) ? selected! : "rohith";
     setUser(id);
     refresh(id)
       .catch((e) => setError(e.message))

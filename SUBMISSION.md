@@ -48,7 +48,7 @@ npm run db:migrate
 npm run dev
 ```
 
-Use the printed local URL. No secrets or paid accounts are needed. Choose Alex Morgan, Jamie Chen, or Sam Rivera from the Demo account dropdown. No password is required.
+Use the printed local URL. No secrets or paid accounts are needed. Choose Rohith Sunkara, Jamie Chen, or Sam Rivera from the Demo account dropdown. No password is required.
 
 ## Candidate responsibility
 

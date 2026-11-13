@@ -29,7 +29,7 @@ An earlier HTTP attempt against the managed preview's loopback URL could not con
 - Edit, format, save, and reopen rich text with headings, bold, italic, and lists.
 - Refresh the page and reopen the persisted formatted document.
 - Grant Jamie editor access, switch accounts, and save from Jamie.
-- Return as Alex and see Jamie's persisted changes.
+- Return as Rohith and see Jamie's persisted changes.
 - Grant Sam viewer access; verify read-only title/content and disabled formatting/save controls.
 - Upload the included sample through the actual file chooser and open the imported document.
 - Open the public deployed app and create a welcome document.

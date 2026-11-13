@@ -19,18 +19,18 @@ Open the URL printed by the dev server (normally `http://localhost:3000`). The f
 
 ## Review in three minutes
 
-1. Leave **Alex Morgan** selected in the sidebar. Click **New document**, rename the title, and type in the editor.
+1. Leave **Rohith Sunkara** selected in the sidebar. Click **New document**, rename the title, and type in the editor.
 2. Select some text and apply **bold**, _italic_, underline, headings, and lists. Wait for **All changes saved**, return to the list, and reopen.
 3. Click **Share**. Give **Jamie Chen** **Can edit** access and **Sam Rivera** **Can view** access.
 4. Switch to Jamie using **Demo account**. The document appears as **Shared · editor**. Edit it and save.
 5. Switch to Sam. Open the shared document: title, content, toolbar, and save are read-only. Sam cannot manage access.
-6. Return as Alex, remove a grant, then switch to that account again. The document is no longer listed or accessible.
+6. Return as Rohith, remove a grant, then switch to that account again. The document is no longer listed or accessible.
 7. Click **Import .txt** and choose `samples/team-kickoff.txt`. Its contents become a new editable document.
 8. Refresh the page and reopen the document. Content, title, formatting, and permissions persist.
 
 | Demo account | Identifier                 | Password |
 | ------------ | -------------------------- | -------- |
-| Alex Morgan  | alex@ajaia.demo / `alex`   | None     |
+| Rohith Sunkara | rohith@ajaia.demo / `rohith` | None     |
 | Jamie Chen   | jamie@ajaia.demo / `jamie` | None     |
 | Sam Rivera   | sam@ajaia.demo / `sam`     | None     |
 

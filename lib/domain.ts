@@ -1,5 +1,5 @@
 export const USERS = [
-  { id: "alex", name: "Alex Morgan", email: "alex@ajaia.demo", initials: "AM" },
+  { id: "rohith", name: "Rohith Sunkara", email: "rohith@ajaia.demo", initials: "RS" },
   {
     id: "jamie",
     name: "Jamie Chen",

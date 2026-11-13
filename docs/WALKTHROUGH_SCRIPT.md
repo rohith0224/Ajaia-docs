@@ -8,11 +8,11 @@ Show the app. “This is a small shared document workspace. I focused on creatin
 
 ## 0:30–1:30 — Create, format, persist
 
-As Alex, create `Team launch plan`. Rename it, add a heading, a paragraph, bold/italic/underline, and a numbered list. Pause on “All changes saved.” Return to the workspace, refresh, and reopen. Explain that structured rich text is stored in SQLite/D1 and autosave is debounced. Export the text if time permits.
+As Rohith, create `Team launch plan`. Rename it, add a heading, a paragraph, bold/italic/underline, and a numbered list. Pause on “All changes saved.” Return to the workspace, refresh, and reopen. Explain that structured rich text is stored in SQLite/D1 and autosave is debounced. Export the text if time permits.
 
 ## 1:30–2:20 — Sharing
 
-Give Jamie editor access and Sam viewer access. Switch to Jamie and add a sentence. Switch to Sam and show that editing controls are disabled. Explain that the server enforces these rules as well as the UI. Return as Alex and remove Sam's grant. Switch to Sam to show the document disappears.
+Give Jamie editor access and Sam viewer access. Switch to Jamie and add a sentence. Switch to Sam and show that editing controls are disabled. Explain that the server enforces these rules as well as the UI. Return as Rohith and remove Sam's grant. Switch to Sam to show the document disappears.
 
 ## 2:20–2:50 — File import
 
