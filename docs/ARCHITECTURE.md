@@ -6,7 +6,7 @@ The core product slice is: create → edit → save → share → reopen as anot
 
 ## Request and data flow
 
-React renders a workspace and a Tiptap/ProseMirror editor. The browser sends JSON to a same-origin HTTP API. The API resolves a declared demo identity, validates data, and delegates to a service backed by parameterized SQLite queries. Vinext packages the React app and routes into a Cloudflare Worker. D1 supplies durable SQLite storage; local Wrangler emulates the same binding.
+React renders a workspace and a Tiptap/ProseMirror editor. The browser sends JSON to a same-origin HTTP API. The API resolves a declared demo identity, validates data, and delegates to a service backed by parameterized SQL queries. The app is a standard Next.js project deployed on Vercel: the page is prerendered and `app/api/[...path]/route.ts` runs as a Node.js serverless function. Neon Postgres supplies durable storage.
 
 Two tables suffice. `documents` stores owner, title, structured JSON content, optimistic version, and timestamps. `shares` stores `(document_id, user_id)` as a composite primary key and the viewer/editor role. Its foreign key references the document. Identity is a fixed set of seeded account definitions rather than a user-management subsystem. There are no uploaded file blobs: imported text becomes validated document content.
 
@@ -26,17 +26,25 @@ List and read queries require owner or a matching grant. Unavailable documents r
 
 ## Deployment and reliability
 
-One Worker serves frontend and API; one D1 database holds all records. Migrations are generated from Drizzle schema and applied before deployment. Local migrations use Wrangler's tracked migration table. SQLite is a practical fit for the small scope. No socket server, third-party API, object storage, or paid editor is required.
+One Vercel project serves frontend and API; one Neon Postgres database (free plan, `iad1`, same region as the functions) holds all records. Vercel's Neon integration injects `DATABASE_URL`. The schema in `db/postgres-schema.mjs` is idempotent (`CREATE TABLE IF NOT EXISTS`): it runs during `npm run build` and again on each server instance's first query, so a deploy works even if it was built before the database was connected. No socket server, third-party API, object storage, or paid editor is required.
+
+`lib/service.ts` talks to a tiny `prepare().bind().first()/all()/run()` interface rather than a specific driver. In production `db/index.ts` implements it with `pg` (converting `?` placeholders to `$1, $2…`); in tests the same interface wraps in-memory SQLite. The service SQL is written to run unchanged on both, so tests exercise the real production queries without needing a database server.
 
 Basic body/file size limits, file extension and UTF-8 validation, bounded tree depth/node count, title limits, no-store API responses, same-origin write checks, and parameterized SQL cover common failure paths. This remains a demo: streaming upload limits, rate limiting, retention, observability and robust production authentication are follow-up work. Listing currently loads all visible documents; pagination/index tuning should accompany real usage.
 
 ## Tradeoffs
 
 - Chose Tiptap over handwritten contenteditable commands for predictable structured editing.
-- Chose SQLite/D1 over localStorage so sharing works across clients and persisted records survive browser refresh.
+- Chose a server database over localStorage so sharing works across clients and persisted records survive browser refresh.
+- Chose Postgres (Neon) over SQLite for the Vercel deployment: Vercel's filesystem is not persistent, and Neon is a first-party Vercel Marketplace integration with a free tier.
+- Chose the standard `pg` driver over Neon's HTTP driver so the same code can be tested against a local Postgres.
 - Chose version checks over last-write-wins to make concurrency failures explicit.
 - Chose mocked accounts over an OAuth integration to keep review friction low.
 - Deferred comments, cursors, history, PDF export, DOCX conversion, offline sync, and account management.
-- The hosted framework starter supplies build/runtime plumbing. App-specific behavior lives in `app/`, `lib/`, `db/`, and `tests/`.
+- App-specific behavior lives in `app/`, `lib/`, `db/`, and `tests/`.
+
+## Hosting history
+
+The first version ran on Cloudflare Workers with a D1 (SQLite) database, packaged by Vinext. It was moved to Vercel and Neon Postgres to deploy through the candidate's own Vercel account. Only the database adapter, the API route's database lookup, the npm scripts and the schema file changed; the service logic, permission checks, validation and UI are unchanged. Some Cloudflare-specific starter files (`worker/`, `vite.config.ts`, `wrangler.local.json`, `lib/connector*`) remain in the repo but are not used by the Vercel build.
 
 With another 2–4 hours, first improve crash recovery and browser regression tests, then refactor editor state into a hook. Production identity/tenant isolation is required before handling real data; it should not be rushed to claim enterprise readiness.
