@@ -1,3 +1,1 @@
-NOT RECORDED YET.
-A hosted 3–5 minute personal walkthrough URL is not included.
-Record the flow in docs/WALKTHROUGH_SCRIPT.md, upload it, and replace this text with the accessible URL before submission.
+https://www.loom.com/share/40f98deeb0514c8bb4e1bd3a20a1efa6

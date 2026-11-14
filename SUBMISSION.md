@@ -5,7 +5,7 @@
 - **Live product:** https://ajaia-docs-one-pi.vercel.app (Vercel + Neon Postgres)
 - **Source repository:** https://github.com/rohith0224/Ajaia-docs
 - **Materials folder:** https://drive.google.com/drive/folders/1LbQQDu7GmUUdkY30-IbAlXTu-f-60cex
-- **Walkthrough:** not yet recorded. See WALKTHROUGH_URL.txt and docs/WALKTHROUGH_SCRIPT.md.
+- **Walkthrough video (Loom):** https://www.loom.com/share/40f98deeb0514c8bb4e1bd3a20a1efa6
 
 ## Included
 
@@ -26,7 +26,7 @@
 | Sample UTF-8 file                                     | samples/team-kickoff.txt         |
 | Browser screenshots and short screenshot-sequence GIF | docs/screenshots/, docs/demo.gif (taken before the rename, so they show "Alex Morgan") |
 | Video preparation script                              | docs/WALKTHROUGH_SCRIPT.md       |
-| Recording status                                      | WALKTHROUGH_URL.txt              |
+| Walkthrough video URL                                 | WALKTHROUGH_URL.txt              |
 
 The archive excludes dependency folders, credentials, environment files, runtime caches, build output, and Git history. Some files from the original Cloudflare starter remain (`worker/`, `vite.config.ts`, `wrangler.local.json`, `lib/connector*`, `scripts/vite/`). The Vercel build does not use them, and they are not additional product features. See docs/ARCHITECTURE.md, "Hosting history".
 
@@ -35,8 +35,6 @@ The archive excludes dependency folders, credentials, environment files, runtime
 **Working:** document creation, rename, structured rich-text editing, autosave, reopen, .txt import, search, owned/shared distinctions, editor/viewer roles, owner-only grant changes, revocation, persistence, stale-save rejection, draft backup download and text export.
 
 **Intentionally excluded:** real authentication, real-time co-editing/merging, comments, revision history, DOCX/Markdown/PDF import, offline synchronization and PDF export. Simulated accounts are permitted by the assignment; they do not protect real private data. Live reviewers share the same demo dataset.
-
-**Incomplete deliverable:** a personal 3–5 minute recorded walkthrough and hosted video URL. The script and screenshots do not substitute for the required recording. Replace WALKTHROUGH_URL.txt and update this status before sending the final assessment submission.
 
 **Next 2–4 hours:** automate browser regression tests, add crash-recovery drafts and improve editor state modularity. Verified sessions, tenant isolation, retention and rate limiting are prerequisites for real use.
 
@@ -53,6 +51,6 @@ npm run dev
 
 Open http://localhost:3000. No paid accounts are needed. `npm test` needs no database at all. Choose Rohith Sunkara, Jamie Chen, or Sam Rivera from the Demo account dropdown. No password is required.
 
-## Candidate responsibility
+## AI assistance
 
-Read docs/AI_WORKFLOW.md. This project was generated with substantial AI assistance (OpenAI Codex for the original build, Claude Code for the move to Vercel and Postgres); review and understand the implementation, run the tests yourself, and describe the assistance accurately in your walkthrough. Do not claim a personal recording or independent human review that has not happened.
+This project was built with substantial AI assistance: OpenAI Codex for the original build, and Claude Code for the move to Vercel and Postgres. docs/AI_WORKFLOW.md describes what each tool did, what was changed or rejected, and how the work was verified. Simulated accounts and the lack of real-time co-editing are deliberate limits, covered in the walkthrough.
