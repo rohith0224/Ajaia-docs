@@ -79,7 +79,7 @@ Hosted on Vercel with a Neon Postgres database. Vercel provides `DATABASE_URL` t
 - `db/schema.ts`, `drizzle/`: schema and versioned migrations.
 - `tests/service.test.ts`: SQLite integration tests.
 - `scripts/migrate-local.mjs`, `scripts/smoke-test.mjs`: local database setup and optional HTTP checks.
-- `docs/`: architecture, AI disclosure, test evidence, deployment and walkthrough notes.
+- `docs/`: architecture, AI disclosure, test evidence and deployment notes.
 
 ## Deliberate limits / next 2–4 hours
 

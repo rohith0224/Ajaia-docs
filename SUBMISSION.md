@@ -25,7 +25,6 @@
 | Demo accounts and reviewer flow                       | README.md                        |
 | Sample UTF-8 file                                     | samples/team-kickoff.txt         |
 | Browser screenshots and short screenshot-sequence GIF | docs/screenshots/, docs/demo.gif (taken before the rename, so they show "Alex Morgan") |
-| Video preparation script                              | docs/WALKTHROUGH_SCRIPT.md       |
 | Walkthrough video URL                                 | WALKTHROUGH_URL.txt              |
 
 The archive excludes dependency folders, credentials, environment files, runtime caches, build output, and Git history. Some files from the original Cloudflare starter remain (`worker/`, `vite.config.ts`, `wrangler.local.json`, `lib/connector*`, `scripts/vite/`). The Vercel build does not use them, and they are not additional product features. See docs/ARCHITECTURE.md, "Hosting history".
