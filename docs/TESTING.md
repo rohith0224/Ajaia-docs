@@ -1,16 +1,17 @@
 # Verification record
 
-Verified on 2026-11-13 using Node 24.22.1.
+Last verified on 2026-11-13 using Node 22.18.0, after the move to Vercel and Neon Postgres.
 
 ## Automated checks completed
 
-- `npm test`: **8 tests passed**, zero failures. Actual generated SQLite migrations and production service queries are executed in an isolated in-memory SQLite database.
+- `npm test`: **8 tests passed**, zero failures. The production service queries run against the SQLite migration in an isolated in-memory database. The service SQL is written to run unchanged on SQLite and Postgres.
 - `npm run typecheck`: **passed**.
-- Production build through the supplied build helper: **passed**.
-- `npm run db:migrate` with a fresh isolated local D1 path: **passed**. Running it again reported no migrations to apply.
-- `BASE_URL=https://ajaia-docs-workspace.workspace-469636.chatgpt.site npm run test:http`: **passed against the live deployment**. It verifies HTTP creation, permission denial, shared editor save, stale-save conflict, owner-only grant management, revocation, file import, unsupported/empty file rejection, invalid JSON-object/title validation, unknown account rejection and cross-origin rejection.
+- `npm run build` (`next build`): **passed**.
+- `npm run db:migrate` against a throwaway local Postgres 17: **passed**, and passed again when re-run (the schema is idempotent).
+- `npm run test:http` against that local Postgres, including a completely empty database with no migration step: **passed**. This confirms the app creates its own tables on first use.
+- `BASE_URL=https://ajaia-docs-one-pi.vercel.app npm run test:http`: **passed against the live Vercel deployment**. It verifies HTTP creation, permission denial, shared editor save, stale-save conflict, owner-only grant management, revocation, file import, unsupported/empty file rejection, invalid JSON-object/title validation, unknown account rejection and cross-origin rejection.
 
-An earlier HTTP attempt against the managed preview's loopback URL could not connect from the executor. The live HTTP test completed successfully and is the reported API evidence. The smoke runner creates test documents and does not delete them.
+The smoke runner creates test documents and does not delete them, so the live database contains some test documents.
 
 ## Eight automated service cases
 
@@ -25,15 +26,17 @@ An earlier HTTP attempt against the managed preview's loopback URL could not con
 
 ## Browser checks completed
 
+These were done on the earlier Cloudflare version of the app, when the first demo account was named Alex Morgan. The UI code did not change in the move to Vercel, but these browser checks have not been repeated on the Vercel deployment yet.
+
 - Create and rename a document.
 - Edit, format, save, and reopen rich text with headings, bold, italic, and lists.
 - Refresh the page and reopen the persisted formatted document.
 - Grant Jamie editor access, switch accounts, and save from Jamie.
-- Return as Rohith and see Jamie's persisted changes.
+- Return as the first demo account (then Alex Morgan, now Rohith Sunkara) and see Jamie's persisted changes.
 - Grant Sam viewer access; verify read-only title/content and disabled formatting/save controls.
 - Upload the included sample through the actual file chooser and open the imported document.
-- Open the public deployed app and create a welcome document.
-- Capture dashboard/editor/sharing/viewer/import screenshots from the preview. Local screenshots show sample data; the hosted database is separate.
+- Open the earlier public deployment and create a welcome document.
+- Capture dashboard/editor/sharing/viewer/import screenshots from the preview. These screenshots predate the rename, so they show "Alex Morgan" where the app now shows "Rohith Sunkara".
 
 The GIF is a short sequence of actual screenshots, not a live screen recording or substitute for the required personal walkthrough video.
 
